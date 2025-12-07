@@ -28,26 +28,29 @@ const listings = [
   {
     id: 1,
     image: estate1,
-    price: "$4,250,000",
-    address: "123 Palm Avenue, Santa Barbara",
-    specs: "4 Beds • 3 Baths • 2,800 SqFt",
-    tag: "New to Market"
+    price: "$1,490,999",
+    address: "5520 N Leslie Street, Pahrump, NV",
+    specs: "3 Beds • 4 Baths • 2,780 SqFt",
+    tag: "Virtual Showing",
+    link: "https://theridgerealty.idxbroker.com/idx/details/listing/c015/2710513/5520-N-Leslie-Street-Pahrump-NV?widgetReferer=true"
   },
   {
     id: 2,
     image: estate2,
-    price: "$7,800,000",
-    address: "88 Ocean View Dr, Montecito",
-    specs: "5 Beds • 5.5 Baths • 4,200 SqFt",
-    tag: "Featured Estate"
+    price: "$1,450,000",
+    address: "2221 W Windsong Lane, Pahrump, NV",
+    specs: "3 Beds • 3 Baths • 1,876 SqFt",
+    tag: "Virtual Showing",
+    link: "https://theridgerealty.idxbroker.com/idx/details/listing/c015/2705063/2221-W-Windsong-Lane-Pahrump-NV?widgetReferer=true"
   },
   {
     id: 3,
     image: estate3,
-    price: "$2,985,000",
-    address: "456 Oak Lane, Hope Ranch",
-    specs: "3 Beds • 2 Baths • 1,900 SqFt",
-    tag: "Pending"
+    price: "$1,285,000",
+    address: "3780 E Kellogg Road, Pahrump, NV",
+    specs: "1 Beds • 9 Baths • 572 SqFt",
+    tag: "Virtual Showing",
+    link: "https://theridgerealty.idxbroker.com/idx/details/listing/c015/2656180/3780-E-Kellogg-Road-Pahrump-NV?widgetReferer=true"
   }
 ];
 
@@ -242,22 +245,27 @@ const About = () => (
 const Listings = () => (
   <section id="listings" className="py-16 md:py-24 bg-soft-gray">
     <div className="container mx-auto px-6 md:px-12">
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 md:mb-16">
-        <div className="w-full md:w-auto">
-          <h4 className="text-luxury-gold uppercase tracking-[0.2em] text-xs font-bold mb-3">Portfolio</h4>
-          <h2 className="text-3xl md:text-5xl font-serif text-luxury-black leading-tight mb-3">Featured Residence</h2>
+      
+      <div className="flex flex-row justify-between items-end mb-10 md:mb-16">
+        <div>
+          <h4 className="text-luxury-gold uppercase tracking-[0.2em] text-[10px] md:text-xs font-bold mb-2 md:mb-3">Portfolio</h4>
+          <h2 className="text-3xl md:text-5xl font-serif text-luxury-black leading-none">Featured</h2>
         </div>
         
         <a href="#" className="flex items-center text-luxury-gold hover:text-luxury-black transition-colors font-medium uppercase tracking-wider text-[10px] md:text-sm pb-1 md:pb-2">
-          View All <span className="hidden md:inline">&nbsp;Listings</span> <ArrowRight size={14} className="ml-1 md:ml-2" />
+          View All <span className="hidden md:inline">&nbsp;Properties</span> <ArrowRight size={14} className="ml-1 md:ml-2" />
         </a>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
         {listings.map((item) => (
-          <div key={item.id} className="group relative bg-white shadow-sm hover:shadow-xl transition-all duration-500">
+          <a 
+            href={item.link} 
+            key={item.id} 
+            className="group relative block bg-white shadow-sm hover:shadow-xl transition-all duration-500 cursor-pointer"
+          >
             <div className="relative aspect-[4/5] overflow-hidden">
-              <span className="absolute top-6 left-6 bg-white/90 backdrop-blur text-luxury-black text-xs px-4 py-2 uppercase tracking-widest font-bold z-10">
+              <span className="absolute top-6 left-6 bg-white/95 backdrop-blur-sm text-luxury-black text-[10px] md:text-xs px-4 py-2 uppercase tracking-widest font-bold z-10 shadow-sm">
                 {item.tag}
               </span>
               <img 
@@ -265,18 +273,21 @@ const Listings = () => (
                 alt={item.address} 
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000 ease-in-out"
               />
-              <div className="absolute inset-0 bg-luxury-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 bg-luxury-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             </div>
-            <div className="p-8">
-              <h3 className="text-3xl font-serif text-luxury-black mb-3">{item.price}</h3>
-              <p className="text-gray-600 mb-6 text-lg font-light">{item.address}</p>
-              <div className="border-t border-gray-100 pt-6 text-sm text-gray-500 font-medium tracking-wider uppercase">
-                {item.specs}
+            
+            <div className="p-6 md:p-8">
+              <h3 className="text-2xl md:text-3xl font-serif text-luxury-black mb-2 group-hover:text-luxury-gold transition-colors">{item.price}</h3>
+              <p className="text-gray-600 mb-6 text-base font-light">{item.address}</p>
+              <div className="border-t border-gray-100 pt-6 text-xs md:text-sm text-gray-500 font-medium tracking-wider uppercase flex justify-between items-center">
+                <span>{item.specs}</span>
+                <ArrowRight size={16} className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-luxury-gold" />
               </div>
             </div>
-          </div>
+          </a>
         ))}
       </div>
+
     </div>
   </section>
 );
