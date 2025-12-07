@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, ArrowRight, Phone, Mail, Instagram, Facebook, Linkedin, ChevronLeft, ChevronRight, Pin } from 'lucide-react';
 
-/* --- ASSET IMPORTS --- */
 // About & Profile
 import profileImg from './assets/metzger-photo.webp';
 
@@ -25,7 +24,6 @@ import partner4 from './assets/partner-4.webp';
 import heroBg from './assets/photo-gallery-4.webp'; 
 import contactBg from './assets/photo-gallery-2.webp';
 
-/* --- MOCK DATA --- */
 const listings = [
   {
     id: 1,
@@ -67,8 +65,6 @@ const testimonials = [
   { id: 3, text: "Professional, discreet, and incredibly knowledgeable. Marci navigated a complex negotiation with ease.", author: "Dr. Evelyn Reed", location: "Hope Ranch Buyer" }
 ];
 
-/* --- COMPONENTS --- */
-
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -90,14 +86,12 @@ const Navbar = () => {
 
   return (
     <>
-      {/* 1. THE NAVIGATION BAR (Stays at the top) */}
       <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/95 backdrop-blur-sm shadow-sm py-4' : 'bg-transparent py-6'}`}>
         <div className="container mx-auto px-6 md:px-12 flex justify-between items-center relative z-50">
           <a href="#" className={`text-xl md:text-2xl font-serif font-bold leading-none transition-colors duration-300 ${scrolled || isOpen ? 'text-luxury-black' : 'text-white'}`}>
             MARCI METZGER
           </a>
           
-          {/* Desktop Menu */}
           <div className={`hidden md:flex space-x-10 ${scrolled ? 'text-luxury-black' : 'text-white'}`}>
             {['Home', 'About', 'Listings', 'Services', 'Contact'].map((item) => (
               <a key={item} href={`#${item.toLowerCase()}`} className="hover:text-luxury-gold transition-colors text-xs uppercase tracking-[0.1em] font-medium">
@@ -106,7 +100,6 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* Mobile Hamburger Button */}
           {!isOpen && (
             <button 
               onClick={() => setIsOpen(true)} 
@@ -118,13 +111,11 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* 2. THE MOBILE MENU OVERLAY (Completely separate from Nav) */}
       <div 
         className={`fixed inset-0 w-screen h-screen bg-white z-[100] flex flex-col items-center justify-center transition-all duration-300 ease-in-out 
         ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}
       >
         
-        {/* Simple Exit Button (Top Right) */}
         <button 
           onClick={() => setIsOpen(false)} 
           className="absolute top-6 right-6 text-luxury-black p-4"
@@ -133,7 +124,6 @@ const Navbar = () => {
           <X size={32} />
         </button>
 
-        {/* Minimalist Link List */}
         <div className="flex flex-col items-center space-y-12">
           {['Home', 'About', 'Listings', 'Services', 'Contact'].map((item) => (
             <a 
@@ -170,7 +160,6 @@ const Navbar = () => {
 
 const Hero = () => (
   <header id="home" className="relative h-screen min-h-[700px] flex items-center justify-start">
-    {/* Background Image */}
     <div className="absolute inset-0">
       <img 
         src={heroBg} 
@@ -180,7 +169,6 @@ const Hero = () => (
       <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent"></div>
     </div>
 
-    {/* Content */}
     <div className="relative z-10 container mx-auto px-6 md:px-12 h-full flex flex-col justify-center">
       <div className="max-w-3xl pt-20">
         <h2 className="text-luxury-gold text-sm md:text-base uppercase tracking-[0.3em] mb-6 font-semibold">The Ridge Realty Group - Pahrump Realtor</h2>
@@ -303,7 +291,6 @@ const Services = () => (
       <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/10 border border-white/10">
         {services.map((service, index) => (
           <div key={index} className="bg-luxury-black p-12 hover:bg-white/5 transition-colors duration-500 group text-center md:text-left relative overflow-hidden">
-            {/* Background Image on Hover */}
             <div className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-700">
               <img src={service.image} alt="" className="w-full h-full object-cover" />
             </div>
@@ -386,7 +373,6 @@ const Contact = () => (
   <section id="contact" className="py-16 md:py-24 bg-white">
     <div className="container mx-auto px-6 md:px-12">
       <div className="flex flex-col lg:flex-row bg-soft-gray shadow-2xl overflow-hidden">
-        {/* Image Side - Updated to use Asset */}
         <div className="lg:w-5/12 relative min-h-[400px]">
            <img 
               src={contactBg} 
